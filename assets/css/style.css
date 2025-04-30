@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka', sans-serif;
+  list-style: none;
+}
+
+/* Header */
+.header-bonis {
+  background-color: #daf0d5;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-header-bonis {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.nav-enlace-bonis {
+  color: #309993;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 8px 0;
+  position: relative;
+}
+
+.nav-enlace-bonis:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #ffdc75;
+  border-radius: 3px;
+  transition: transform 0.2s ease;
+}
+
+.nav-enlace-bonis.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #ffdc75;
+  border-radius: 3px;
+}
+
+.user-icons-bonis i {
+  color: #309993;
+  margin-left: 10px;
+  font-size: 45px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.user-icons-bonis i:hover {
+  color: #ffdc75;
+}
+
+.menu-icon-bonis {
+  display: inline-block !important;
+}
+
+/* Body */
+
+main {
+  flex: 1;
+  background-color: #fff9dc;
+  background-size: cover;
+
+}
+
+/* fondos */
+
+.fondo-welcome{
+  background-image: linear-gradient(#fff9dc66), 
+  url("../img/fondo-welcome.png");
+  align-items: center;
+  justify-content: center;
+  height: 150vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.fondo-inicio-registro{
+  background-image: 
+  url("../img/fondo.inicio-registro.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.fondo-inicio-usuario{
+  background-image: linear-gradient(#fff9dc66), 
+  url("../img/fondo-inicio-usuario.png");
+}
+
+.fondo-inicio-admin{
+  background-image: linear-gradient(#fff9dc66), 
+  url("../img/fondo-inicio-admin.png");
+}
+
+.fondo-habitos{
+  background-image: linear-gradient(#fff9dc66), 
+  url("../img/fondo-habitos.png");
+}
+
+
+/* Footer */
+.footer-bonis {
+  background-color: #daf0d5;
+  font-family: 'Fredoka', sans-serif;
+  padding-bottom: 32px;
+}
+
+.container-footer-bonis {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 32px; 
+}
+
+.footer-titulo {
+  color: #309993;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.footer-enlace {
+  color: #309993;
+  text-decoration: none;
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px; 
+}
+
+
+.footer-enlace:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #ffdc75;
+  border-radius: 3px;
+  transition: transform 0.2s ease;
+}
+
+.footer-texto {
+  color: #309993;
+  margin-bottom: 8px; 
+  font-size: 17px; 
+}
+
+.footer-icono {
+  color: #309993;
+  font-size: 30px;
+  transition: color 0.3s; 
+}
+
+.footer-icono:hover {
+  color: #ffdc75;
+}
+
+.dot-bonis {
+  height: 8px;
+  width: 8px;
+  background-color: #ffdc75;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px; 
+}
+
+.footer-linea {
+  border: none;
+  height: 2px;
+  background-color: #8ec5a8;
+  margin: 32px 32px 16px 32px; 
+}
+
+.footer-creditos {
+  color: #309993;
+  font-size: 19px; 
+}
+
+.footer-enlaces-legales {
+  display: flex;
+  justify-content: center;
+  gap: 8px; 
+  flex-wrap: wrap;
+  margin-top: 4px;
+  position: relative;
+}
+
+.footer-enlaces-legales a {
+  color: #309993;
+  font-size: 16px; 
+}
+
+
+.footer-enlaces-legales a:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #ffdc75;
+  border-radius: 3px;
+  transition: transform 0.2s ease;
+}
+
+/* welcome */
+
+.container-growi {
+  max-width: 900px; 
+  margin: 0; 
+  padding: 20px;
+}
+
+.titulo-growi {
+  font-size: 90px;
+  font-weight: bold;
+  color: #6A6545;
+}
+
+.texto-growi {
+  font-size: 50px;
+  color: #6A6545;
+  margin-bottom: 60px;
+}
+
+.btn-comenzar {
+  background-color: #FFDA67;
+  border-radius: 30px;
+  padding: 25px 50px;
+  font-weight: bold;
+  font-size: 40px;
+  color: #2D6557;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-comenzar:hover {
+  background-color: #f7c83d;
+  color: #1f6553;
+  
+}
+
+.growi-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-top: 20px;
+  margin: 0;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 1000px) {
+
+  .fondo-welcome {
+    height: 100vh; 
+  }
+  .titulo-growi {
+    font-size: 40px; 
+  }
+
+  .texto-growi {
+    font-size: 18px; 
+  }
+
+  .btn-comenzar {
+    font-size: 16px; 
+    padding: 10px 20px; 
+  }
+
+  .container-growi {
+    padding: 10px; 
+  }
+  .container-growi img {
+    width: 150px; 
+  }
+
+  .growi-img {
+    max-width: 200px;
+    width: 100%;  
+    height: auto;
+  }
+}
+
+/* login */
+
+.caja-login {
+  background-color: #fefbdec0;
+  border: 3px solid #FFDA67;
+  border-radius: 25px;
+}
+
+.titulo-login {
+  font-size: 40px;
+  color: #2D6557;
+}
+
+.enlace-registro {
+  font-weight: bold;
+  color: #2D6557;
+  text-decoration: none;
+}
+
+.enlace-registro:hover{
+  color: #309993;
+}
+
+.campo-login {
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 18px;
+  width: 90%;
+  border: 3px solid #ffdc75;
+}
+
+.btn-login {
+  background-color: #FFDA67;
+  border-radius: 30px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #2D6557;
+  text-decoration: none;
+  border: none;
+  width: 90%;
+}
+
+.btn-login:hover {
+  background-color: #f7c83d;
+  color: #1f6553;
+  
+}
+
+.login-icono {
+  color: #309993;
+  font-size: 45px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.login-icono i:hover {
+  color: #ffdc75;
+}
+
+.icono-ojo {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: #6A6545;
+  cursor: pointer;
+}
+.icono-ojo:hover {
+  color: #2D6557;
+}
+
+.enlace-olvide {
+  font-size: 16px;
+  color: #2D6557;
+  text-decoration: none;
+}
+.enlace-olvide:hover {
+  color: #309993;
+}
+

@@ -1,0 +1,105 @@
+CREATE TABLE roles (
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE
+)ENGINE = InnoDB;
+
+CREATE TABLE estatus (
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(50) NOT NULL UNIQUE
+)ENGINE = InnoDB;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombres VARCHAR(100) NOT NULL,
+    a_paterno VARCHAR(50) NOT NULL,
+    a_materno VARCHAR(50),
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+
+    telefono VARCHAR(15),
+    avatar_url VARCHAR(255),
+    fecha_nacimiento DATE,
+    frase_motivacional VARCHAR(255),
+    ultima_conexion DATETIME,
+    
+    rol_id TINYINT UNSIGNED NOT NULL DEFAULT 2,
+    estatus_id TINYINT UNSIGNED NOT NULL DEFAULT 1,
+
+    FOREIGN KEY (rol_id) REFERENCES roles(id),
+    FOREIGN KEY (estatus_id) REFERENCES estatus(id),
+
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)ENGINE = InnoDB;
+
+
+
+
+CREATE TABLE frecuencias (
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)ENGINE = InnoDB;
+
+CREATE TABLE dias (
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(15) NOT NULL UNIQUE,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)ENGINE = InnoDB;
+
+CREATE TABLE habitos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    frecuencia_id TINYINT UNSIGNED NOT NULL,
+    meta_semanal TINYINT UNSIGNED,
+    color VARCHAR(7),
+    icono VARCHAR(100),
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (frecuencia_id) REFERENCES frecuencias(id)
+)ENGINE = InnoDB;
+
+CREATE TABLE habitos_dias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    habito_id INT NOT NULL,
+    dia_id TINYINT UNSIGNED NOT NULL,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (habito_id) REFERENCES habitos(id),
+    FOREIGN KEY (dia_id) REFERENCES dias(id)
+)ENGINE = InnoDB;
+
+CREATE TABLE registros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    habito_id INT NOT NULL,
+    fecha DATE NOT NULL,
+    completado BOOLEAN NOT NULL,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (habito_id) REFERENCES habitos(id)
+)ENGINE = InnoDB;
+
+CREATE TABLE insignias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    icono VARCHAR(100),
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)ENGINE = InnoDB;
+
+CREATE TABLE usuarios_insignias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    insignia_id INT NOT NULL,
+    fecha_obtenida DATE NOT NULL,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (insignia_id) REFERENCES insignias(id)
+)ENGINE = InnoDB;
