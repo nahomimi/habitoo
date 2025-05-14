@@ -17,23 +17,51 @@ body {
   background-attachment: fixed;
 }
 .fondo-welcome {
-  background-image: linear-gradient(#fff9dc66), url("../img/fondo-welcome.png");  
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-welcome.png") !important;  
 }
 
 .fondo-inicio-registro {
-  background-image: url("../img/fondo.inicio-registro.png"); 
+  background-image: url("../img/fondo.inicio-registro.png") !important; 
 }
 
 .fondo-inicio-usuario {
-  background-image: linear-gradient(#fff9dc66), url("../img/fondo-inicio-usuario.png");  
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-inicio-usuario.png") !important;  
 }
 
 .fondo-inicio-admin {
-  background-image: linear-gradient(#fff9dc66), url("../img/fondo-inicio-admin.png"); 
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-inicio-admin.png") !important; 
 }
 
 .fondo-habitos {
-  background-image: linear-gradient(#fff9dc66), url("../img/fondo-habitos.png"); 
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-habitos.png") !important; 
+}
+
+.fondo-progreso {
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-progreso.png") !important; 
+}
+
+.fondo-index {
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-index.png") !important; 
+}
+
+.fondo-1 {
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-1.png") !important; 
+}
+
+.fondo-2 {
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-2.png") !important; 
+}
+
+.fondo-3 {
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-3.png") !important; 
+}
+
+.fondo-4 {
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-4.png") !important; 
+}
+
+.fondo-5 {
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-5.png") !important; 
 }
 /* welcome */
 
@@ -165,64 +193,173 @@ body {
 }
 
 /* -------------- lista_usuarios ----------------- */
-.caja-usuarios {
-  background-color: #fefbdec0;
-  border: 3px solid #FFDA67;
-  border-radius: 25px;
-  padding: 20px;
+
+
+/* Título vistoso */
+.lista_usuarios_titulo {
+  font-size: 32px; 
+  color: #2e9a83; 
+  background: #daf0d5; 
+  padding: 20px 100px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
 }
 
-.titulo-usuarios {
-  font-size: 40px;
-  color: #2D6557;
+.lista_usuarios_tabla {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  overflow: hidden;
+  border: 5px solid #e7af055c !important; 
+  border-radius: 20px;
+}
+
+/* Cabecera de tabla */
+.lista_usuarios_tabla thead th {
+  background-color: #f9d66f; 
+  font-weight: bold;
+  font-size: 18px; 
+  padding: 15px; 
+  border: solid 2px #e7af05;
+  color: #6d400c;
+}
+
+/* Filas alternadas */
+.lista_usuarios_tabla tbody tr:nth-child(odd) {
+  background-color: #fff9e0 !important; 
+}
+
+.lista_usuarios_tabla tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Celdas */
+.lista_usuarios_tabla td {
+  padding: 15px; 
+  border: solid 2px #e7af05;
+  vertical-align: middle;
+  font-size: 16px; 
+}
+
+/* Iconos CRUD */
+.btn-ver, .btn-editar, .btn-eliminar {
+  font-size: 24px;
+  padding: 8px;
+  margin: 0 6px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Icono VER */
+.btn-ver {
+  color: #1ab7c9; 
+}
+
+.btn-ver:hover {
+  color: #117b8b; 
+  transform: scale(1.2);
+}
+
+/* Icono EDITAR */
+.btn-editar {
+  color: #ff8d8d; 
+}
+
+.btn-editar:hover {
+  color: #c25858; 
+  transform: scale(1.2);
+}
+
+/* Icono ELIMINAR */
+.btn-eliminar {
+  color: #f96d02; 
+}
+
+.btn-eliminar:hover {
+  color: #c16700; 
+  transform: scale(1.2);
+}
+/* -------------------- USUARIO INFO -------------------- */
+
+.card-diseño-usuario {
+  background-color: #fff2c6c2 !important;
+  border-radius: 40px !important;
+  border: 5px solid #fdd25340 !important;
+  box-shadow: 0 4px 8px #0000001a;
+  padding: 1.5rem;
+  max-width: 450px;
+  width: 100%;
+
+}
+
+.card-nombre {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #309993;
+}
+
+.card-correo {
+  font-size: 1rem;
+  color: #309993;
+  margin-bottom: 1rem;
+}
+
+.subcard-datos {
+  background-color: #faf6eb;
+  border-radius: 20px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.subcard-datos .list-group-item {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: #3c2103d7;
+}
+
+.btn-regresar-icono {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.8rem;
+  color: #fdd353;
+  text-decoration: none;
+}
+
+.btn-regresar-icono:hover {
+  color: #e7af05;
+}
+
+.icono-editar {
   text-align: center;
 }
 
-.tabla-usuarios {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-}
-
-.tabla-usuarios th, .tabla-usuarios td {
-  padding: 15px;
-  border: 3px solid #FFDA67;
-  font-size: 18px;
-  color: #2D6557;
-}
-
-.tabla-usuarios th {
-  background-color: #FFDA67;
-  color: #fff;
-}
-
-.tabla-usuarios tbody tr:nth-child(even) {
-  background-color: #f7f7f7;
-}
-
-.btn-editar, .btn-eliminar {
-  background-color: #FFDA67;
-  border-radius: 30px;
-  padding: 10px 20px;
-  font-size: 18px;
-  color: #2D6557;
+.btn-editar-icono {
+  font-size: 50px; 
+  color: #fdd353;
   text-decoration: none;
-  border: none;
-  margin: 0 5px;
 }
 
-.btn-editar:hover, .btn-eliminar:hover {
-  background-color: #f7c83d;
-  color: #1f6553;
+.btn-editar-icono:hover {
+  color: #e7af05;
 }
 
-.alert-aguas {
-  background-color: #309993;
-  color: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 18px;
+.growi-imagen img {
+  width: 100%;
+  max-width: 450px;
 }
+
+/* Cuando la pantalla es menor a 768px (como en celular), cambia el tamaño a 250px */
+@media (max-width: 768px) {
+  .growi-imagen img {
+    max-width: 250px;
+  }
+}
+
 
 
 /* Header */

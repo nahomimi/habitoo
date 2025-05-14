@@ -11,7 +11,12 @@
                 <!-- Navegación - Visible en desktop -->
                 <nav class="d-none d-md-block ms-auto ">
                     <ul class="d-flex mb-0">
-                        <li class="mx-3"><a href="#" class="nav-enlace-bonis active">Dashboards</a></li>
+                        <li class="mx-3"><a href="#" class="nav-enlace-bonis active">Inicio</a></li>
+                        <li class="mx-3">
+                            <a href="#" class="nav-enlace-bonis active">
+                                <i class="bi bi-person-plus me-2"></i>Agregar usuario
+                            </a>
+                        </li>
                     </ul>
                 </nav>
 
