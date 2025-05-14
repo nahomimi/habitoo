@@ -15,6 +15,7 @@ CREATE TABLE usuarios (
     a_materno VARCHAR(50),
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    recover_pass VARCHAR(255) NOT NULL,
 
     telefono VARCHAR(15),
     avatar_url VARCHAR(255),

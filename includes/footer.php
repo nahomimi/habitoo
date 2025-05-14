@@ -5,7 +5,9 @@
 
       <!-- Logo -->
       <div class="col-md-5 mb-4 mb-md-0 text-center">
-        <img src="../assets/img/logito.png" alt="Logo" width="250" />
+        <a href="/habitoo/index.php">
+          <img src="/habitoo/assets/img/logito.png" alt="Logo" width="250" />
+        </a>
       </div>
 
       <!-- Menú -->
@@ -55,7 +57,8 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
+</body>
 </html>
+
