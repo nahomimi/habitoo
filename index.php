@@ -1,6 +1,6 @@
 <?php require_once('includes/header.php'); ?>
 
-<body class="fondo-welcome">
+<body class="fondo-welcome d-flex flex-column min-vh-100">
     <main class="d-flex align-items-center justify-content-center">
 
         <div class="container-growi text-center text-md-start px-3 ">

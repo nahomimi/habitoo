@@ -33,12 +33,19 @@
       </div>
 
       <!-- Redes Sociales -->
-      <div class="col-md-2 text-center">
-        <h5 class="footer-titulo mb-3">Redes Sociales</h5>
-        <a href="#" class="footer-icono me-3"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="footer-icono me-3"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="footer-icono"><i class="bi bi-twitter"></i></a>
-      </div>
+<div class="col-md-2 text-center">
+  <h5 class="footer-titulo mb-3">Redes Sociales</h5>
+  <a href="https://www.facebook.com/CUCEAUdeG" target="_blank" class="footer-icono me-3">
+    <i class="bi bi-facebook"></i>
+  </a>
+  <a href="https://www.instagram.com/cucea_udeg" target="_blank" class="footer-icono me-3">
+    <i class="bi bi-instagram"></i>
+  </a>
+  <a href="https://twitter.com/CUCEAUdeG" target="_blank" class="footer-icono">
+    <i class="bi bi-twitter"></i>
+  </a>
+</div>
+
 
     </div>
 

@@ -1,14 +1,4 @@
-<?php
-// Activa el manejo de sesiones (debería ir al inicio de tu archivo PHP)
-session_start();
 
-// // Verifica si el usuario ya está logueado, de no estarlo, redirige a la página de login
-// if (!isset($_SESSION['usuario_id'])) {
-//   header("Location: http://localhost/habitoo/sign_up.php");
-//   exit();
-// }
-
-?>
 
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/habitoo/includes/header.php'); ?>
 
@@ -41,14 +31,14 @@ session_start();
             </div>
 
             <div class="position-relative mb-2">
-              <input type="password" id="password" name="password" class="campo-login" placeholder="Contraseña" required>
-              <i class="bi bi-eye-slash-fill icono" id="togglePassword"></i>
-            </div>
+                <input type="password" id="password" name="password" class="campo-login" placeholder="Contraseña" required>
+                <i class="bi bi-eye-slash-fill icono" id="togglePassword1" onclick="togglePassword('password', this)"></i>
+              </div>
 
-            <div class="position-relative mb-2">
-              <input type="password" id="confirm_password" name="confirm_password" class="campo-login" placeholder="Confirmar contraseña" required>
-              <i class="bi bi-eye-slash-fill icono" id="togglePassword"></i>
-            </div>
+              <div class="position-relative mb-2">
+                <input type="password" id="confirm_password" name="confirm_password" class="campo-login" placeholder="Confirmar contraseña" required>
+                <i class="bi bi-eye-slash-fill icono" id="togglePassword2" onclick="togglePassword('confirm_password', this)"></i>
+              </div>
 
             <input type="submit" class="btn-login mt-4" value="Registrarse">
 
@@ -64,18 +54,18 @@ session_start();
 </main>
 
 <script>
-// Script para mostrar/ocultar contraseña
-const togglePassword = document.getElementById('togglePassword');
-const passwordInput = document.getElementById('password');
-const confirmPasswordInput = document.getElementById('confirm_password');
-
-togglePassword.addEventListener('click', function () {
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
-  confirmPasswordInput.setAttribute('type', type); // Para mostrar/ocultar ambas contraseñas
-  this.classList.toggle('bi-eye-fill');
-  this.classList.toggle('bi-eye-slash-fill');
-});
+function togglePassword(inputId, icon) {
+  const input = document.getElementById(inputId);
+  if (input.type === "password") {
+    input.type = "text";
+    icon.classList.remove("bi-eye-slash-fill");
+    icon.classList.add("bi-eye-fill");
+  } else {
+    input.type = "password";
+    icon.classList.remove("bi-eye-fill");
+    icon.classList.add("bi-eye-slash-fill");
+  }
+}
 </script>
 
 <script>

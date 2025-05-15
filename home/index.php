@@ -1,3 +1,4 @@
+
 <?php
 if (session_status() == PHP_SESSION_NONE) {
   session_start(); // Solo se inicia si no está iniciada
@@ -11,6 +12,10 @@ if (!isset($_SESSION['usuario_id'])) {
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/habitoo/includes/header.php');
 
+?>
+<body class="fondo-2 d-flex flex-column min-vh-100">
+<?php
+
 require_once($_SERVER['DOCUMENT_ROOT'] . '/habitoo/includes/menu.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/conexion.php");
@@ -23,7 +28,7 @@ error_reporting(E_ALL);
 ?>
 
 
-<main class="fondo-inicio-usuario flex-grow-1 py-4
+<main class="flex-grow-1 py-4
 
 "> <!-- Área de contenido principal -->
   <div class="container">
@@ -31,7 +36,6 @@ error_reporting(E_ALL);
     <p>Tu aplicación para gestión de hábitos</p>
   </div>
 </main>
-
 
 
 <?php

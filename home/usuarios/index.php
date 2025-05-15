@@ -9,6 +9,9 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['rol_id'] != 1) {
   exit();
 }
 
+?>
+<body class="fondo-5 d-flex flex-column min-vh-100">
+<?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/header_admin.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/menu_admin.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/conexion.php");
@@ -43,8 +46,10 @@ $stmt = $conn->query($sql);
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
-<main class="fondo-inicio-admin py-5 min-vh-100 d-flex flex-column">
+<body class="fondo-inicio-registro">
+  
+</body>
+<main class=" py-5 d-flex flex-column">
   <div class="container flex-grow-1">
     <div class="text-center mb-4">
       <h2 class="lista_usuarios_titulo">Usuarios Registrados</h2>
@@ -119,8 +124,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </main>
 
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/footer_admin.php"); ?>
-
 <script>
   // Esperar 4 segundos y ocultar la alerta con efecto suave
   setTimeout(function () {
@@ -128,16 +131,11 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (alerta) {
       alerta.style.transition = "opacity 0.5s ease";
       alerta.style.opacity = 0;
-
+      
       // Después de la transición, ocultar completamente
       setTimeout(() => alerta.style.display = "none", 500);
     }
   }, 4000);
 </script>
 
-
-
-
-</body>
-
-</html>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/footer_admin.php"); ?>
