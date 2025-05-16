@@ -72,13 +72,13 @@ $habitos = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?= date('d/m/Y', strtotime($h['fecha_creacion'])) ?></td>
 
           <td>
-            <a href="ver_habito.php?id=<?= $h['id'] ?>" class="btn-ver me-1" title="Ver">
+            <a href="/habitoo/home/habitos/ver_habitos.php"?id=<?= $h['id'] ?>" class="btn-ver me-1" title="Ver">
               <i class="bi bi-eye-fill"></i>
             </a>
-            <a href="editar_habito.php?id=<?= $h['id'] ?>" class="btn-editar me-1" title="Editar">
+            <a href="/habitoo/home/habitos/editar_habitos.php?id=<?= $h['id'] ?>" class="btn-editar me-1" title="Editar">
               <i class="bi bi-pencil-fill"></i>
             </a>
-            <a href="eliminar_habito.php?id=<?= $h['id'] ?>" class="btn-eliminar" title="Eliminar"
+            <a href="/habitoo/home/habitos/eliminar_habitos.php?id=<?= $h['id'] ?>" class="btn-eliminar" title="Eliminar"
                onclick="return confirm('¿Eliminar el hábito <?= htmlspecialchars($h['nombre']) ?>?')">
               <i class="bi bi-trash-fill"></i>
             </a>

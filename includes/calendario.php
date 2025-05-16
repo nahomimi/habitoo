@@ -13,10 +13,14 @@ $anio_actual = date('Y');
 // Crear fecha para formatear el nombre del mes
 $fecha = new DateTime("$anio-$mes-01");
 
-// Usamos IntlDateFormatter para mostrar el mes en español
-$formatter = new IntlDateFormatter('es_ES', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
-$formatter->setPattern("MMMM");
-$nombre_mes = ucfirst($formatter->format($fecha));
+$meses = [
+  1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril',
+  5 => 'Mayo', 6 => 'Junio', 7 => 'Julio', 8 => 'Agosto',
+  9 => 'Septiembre', 10 => 'Octubre', 11 => 'Noviembre', 12 => 'Diciembre'
+];
+
+$nombre_mes = $meses[$mes];
+
 
 // Número de días del mes
 $dias_mes = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
