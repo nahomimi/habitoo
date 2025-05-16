@@ -40,7 +40,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/header_admin.php");
               echo "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick='this.parentElement.style.display=\"none\";'></button>";
               echo "</div>";
             }
+              // Mostrar mensaje de éxito si existe
+            if (isset($_GET['success'])) {
+              echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>";
+              echo htmlspecialchars($_GET['success']);
+              echo "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick='this.parentElement.style.display=\"none\";'></button>";
+              echo "</div>";
+            }
             ?>
+            
 
             <form action="/habitoo/includes/registrar_usuario.php" method="POST" onsubmit="return validarFormulario();">
 

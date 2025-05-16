@@ -327,6 +327,17 @@ body {
   color: #c16700; 
   transform: scale(1.2);
 }
+
+/* Icono check */
+.btn-check {
+  color: #3d1c04; 
+}
+
+.btn-check:hover {
+  color: #180d00; 
+  transform: scale(1.2);
+}
+
 /* -------------------- USUARIO INFO -------------------- */
 
 .card-diseño-usuario {
@@ -532,7 +543,6 @@ body {
 }
 
 
-
 /* ----------------CALENDARIO----------------- */
 /* Contenedor principal del calendario */
 .calendario-habitoo {
@@ -636,6 +646,52 @@ body {
     font-size: 14px;
   }
 }
+
+/* ---------registrar habitos--------- */
+
+.caja-dias {
+  padding: 10px;
+  background-color: #ffffff8f;
+  border-radius: 12px;
+  width: 90%;
+  margin: 0 auto; /* Centra horizontalmente */
+  text-align: center; /* Centra el contenido dentro */
+}
+
+.etiqueta-dia {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #9dddda;
+  color: #105854;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-dia:checked + .etiqueta-dia {
+  background-color: #a8e6cf;
+  color: #21726e;
+  font-weight: 600;
+  border: 1px solid #309993;
+}
+
+/* Título vistoso */
+.habitos_registro_titulo {
+  font-size: 32px; 
+  color: #ff5667; 
+  background: #f88da677; 
+  padding: 20px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  margin-left: auto; /* Centra horizontalmente */
+  margin-right: auto; /* Centra horizontalmente */
+  text-align: center; /* Centra el texto dentro */
+}
+
 
 
 

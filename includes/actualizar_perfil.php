@@ -32,28 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fecha_nacimiento = $_POST['fecha_nacimiento'] ?? null;
         $frase_motivacional = htmlspecialchars($_POST['frase_motivacional'] ?? '');
 
-        $avatar_url = null;
-
-        // Manejo de imagen
-        if (!empty($_FILES['avatar']['name'])) {
-            $archivo = $_FILES['avatar'];
-            $nombreArchivo = basename($archivo['name']);
-            $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
-            $permitidos = ['jpg', 'jpeg', 'png'];
-
-            if (in_array($extension, $permitidos) && $archivo['size'] <= 2 * 1024 * 1024) {
-                $nombreUnico = uniqid('perfil_', true) . '.' . $extension;
-                $rutaAbsoluta = $_SERVER['DOCUMENT_ROOT'] . "/habitoo/assets/uploads/" . $nombreUnico;
-
-                if (move_uploaded_file($archivo['tmp_name'], $rutaAbsoluta)) {
-                    $avatar_url = "assets/uploads/" . $nombreUnico;
-                }
-            } else {
-                header("Location: /habitoo/home/perfil.php?error=" . urlencode("La imagen debe ser JPG o PNG y pesar máximo 2MB"));
-                exit();
-            }
-        }
-
         // SQL base
         $sql = "UPDATE usuarios SET 
                     nombres = :nombres,
@@ -62,13 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     email = :email,
                     telefono = :telefono,
                     fecha_nacimiento = :fecha_nacimiento,
-                    frase_motivacional = :frase_motivacional";
-
-        if ($avatar_url !== null) {
-            $sql .= ", avatar_url = :avatar_url";
-        }
-
-        $sql .= " WHERE id = :id";
+                    frase_motivacional = :frase_motivacional
+                WHERE id = :id";
 
         $stmt = $conn->prepare($sql);
 
@@ -82,10 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':frase_motivacional' => $frase_motivacional,
             ':id' => $id
         ];
-
-        if ($avatar_url !== null) {
-            $params[':avatar_url'] = $avatar_url;
-        }
 
         $stmt->execute($params);
 

@@ -20,12 +20,7 @@ $paginaActual = basename($_SERVER['PHP_SELF']);
                             <i class="bi bi-house-door-fill icono-menu me-2"></i>Inicio
                         </a>
                     </li>
-                    <li class="mx-3">
-                        <a href="/habitoo/home/habitos/index.php"
-                           class="nav-enlace-bonis <?= str_contains($paginaActual, 'habitos') ? 'active' : '' ?>">
-                            <i class="bi bi-list-check icono-menu me-2"></i>Hábitos
-                        </a>
-                    </li>
+                 
                     <li class="mx-3">
                         <a href="/habitoo/home/productividad/index.php"
                            class="nav-enlace-bonis <?= str_contains($paginaActual, 'productividad') ? 'active' : '' ?>">
@@ -57,12 +52,6 @@ $paginaActual = basename($_SERVER['PHP_SELF']);
                         <a class="dropdown-item <?= $paginaActual == 'index.php' ? 'active' : '' ?>"
                            href="/habitoo/home/usuarios/index.php">
                             <i class="bi bi-house-door-fill icono-menu me-2"></i>Inicio
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item <?= str_contains($paginaActual, 'habitos') ? 'active' : '' ?>"
-                           href="/habitoo/home/habitos/index.php">
-                            <i class="bi bi-list-check icono-menu me-2"></i>Hábitos
                         </a>
                     </li>
                     <li>

@@ -68,15 +68,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/habitoo/includes/header.php');
           </div>
 
           <!-- Botones -->
-          <div class="col-auto botones-col d-flex flex-column align-items-center gap-3">
-            <a href="#" class="boton-habito boton-agregar boton-cuadrado">
+            <div class="col-auto botones-col d-flex flex-column align-items-center gap-3">
+            <a href="<?= '/habitoo/home/habitos/registrar_habitos.php' ?>" class="boton-habito boton-agregar boton-cuadrado">
               <i class="bi bi-plus-circle agregar-icon"></i> Agregar hábito
             </a>
-            <a href="#" class="boton-habito boton-ver boton-cuadrado">
+            <a href="<?= '/habitoo/home/habitos/index.php' ?>"  class="boton-habito boton-ver boton-cuadrado">
               <i class="bi bi-eye ver-icon"></i> Ver mis hábitos
             </a>
-            <a href="#" class="boton-habito boton-huella boton-cuadrado mb-2">
-              <i class="bi bi-clock-history huella-icon"></i> Seguimiento de hábitos
+            <a href="<?= '/habitoo/home/habitos/registrar.php' ?>"  class="boton-habito boton-huella boton-cuadrado mb-2">
+              <i class="bi bi-clock-history huella-icon"></i> Huella de mis Metas
             </a>
           </div>
 

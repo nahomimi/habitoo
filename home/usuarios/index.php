@@ -64,7 +64,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="table-responsive">
       <table class=" table-bordered shadow text-center align-middle lista_usuarios_tabla">
-
+        
         <?php if (isset($_GET['exito'])): ?>
           <div class="alert alert-success text-center lista_usuarios_alerta">
             <?= htmlspecialchars($_GET['exito']) ?>

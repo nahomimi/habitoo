@@ -1,6 +1,18 @@
 <?php 
 session_start();
 
+if (isset($_SESSION['usuario_id'])) {
+    // Conectarse a la base de datos
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/habitoo/includes/conexion.php');
+    $conexion = new Conexion();
+    $conn = $conexion->conectar();
+
+    // Guardar la última conexión
+    $usuario_id = $_SESSION['usuario_id'];
+    $stmt = $conn->prepare("UPDATE usuarios SET ultima_conexion = NOW() WHERE id = ?");
+    $stmt->execute([$usuario_id]);
+}
+
 // Limpia todas las variables de sesión
 $_SESSION = array();
 
