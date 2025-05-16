@@ -1,30 +1,33 @@
 <?php
-require_once('conexion.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/habitoo/includes/conexion.php');
 session_start();
 
 // Si ya está logueado, redirigir al usuario a su página correspondiente
 if (isset($_SESSION['usuario_id'])) {
     if ($_SESSION['rol_id'] == 1) {
-        header("Location: ../home/usuarios/index.php");
+        header("Location: /habitoo/home/usuarios/index.php");
         exit();
     } elseif ($_SESSION['rol_id'] == 2) {
-        header("Location: ../home/index.php");
+        header("Location: /habitoo/home/index.php");
         exit();
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $errors = [];
 
-    if (!empty($_POST['email']) && !empty($_POST['password'])) {
-        
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
 
+    if (empty($email) || empty($password)) {
+        $errors[] = 'Completa todos los campos';
+    }
+
+    if (empty($errors)) {
         try {
             $conexion = new Conexion();
             $pdo = $conexion->conectar();
 
-            // Solo usuarios con estatus activo
             $sql = "SELECT * FROM usuarios WHERE email = :email AND estatus_id = 1";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(['email' => $email]);
@@ -35,31 +38,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['nombre_completo'] = $usuario['nombres'] . " " . $usuario['a_paterno'] . " " . $usuario['a_materno'];
                 $_SESSION['rol_id'] = $usuario['rol_id'];
 
-                // Redirigir a las páginas según el rol
+                // Redirigir según rol
                 if ($usuario['rol_id'] == 1) {
-                    header("Location: ../home/usuarios/index.php");
+                    header("Location: /habitoo/home/usuarios/index.php");
                 } elseif ($usuario['rol_id'] == 2) {
-                    header("Location: ../home/index.php");
+                    header("Location: /habitoo/home/index.php");
                 } else {
-                    header("Location: ../login.php?error=" . urlencode("Rol no válido"));
+                    $errors[] = 'Rol no válido';
                 }
                 exit();
             } else {
-                header("Location: ../login.php?error=" . urlencode("Credenciales incorrectas o usuario inactivo"));
-                exit();
+                $errors[] = 'Credenciales incorrectas o usuario inactivo';
             }
 
         } catch (Exception $e) {
-            header("Location: ../login.php?error=" . urlencode("Error de conexión"));
-            exit();
+            $errors[] = 'Error de conexión a la base de datos';
+        }
+    }
+
+    // Mostrar errores si existen
+    if (!empty($errors)) {
+        $mensaje = implode('\n', $errors);
+        $_SESSION['error_message'] = $mensaje;
+        header("Location: /habitoo/login.php");
+        exit();
         }
 
     } else {
-        header("Location: ../login.php?error=" . urlencode("Completa todos los campos"));
+        $_SESSION['error_message'] = 'Método no permitido';
+        header("Location: /habitoo/login.php");
         exit();
-    }
-
-} else {
-    header("Location: ../login.php?error=" . urlencode("Método no permitido"));
     exit();
 }
+?>

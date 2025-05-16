@@ -31,12 +31,15 @@ if (isset($_SESSION['usuario_id'])) {
           <h2 class="titulo-login mb-3">Inicia Sesión</h2>
           <p>¿Aún no tienes cuenta? <a href="sign_up.php" class="enlace-registro">Regístrate</a></p>
 
-          <?php 
+            <?php 
             // Mostrar mensaje de error si existe
             if (isset($_GET['error'])) {
-                echo "<p class='alert alert-aguas'>" . htmlspecialchars($_GET['error']) . "</p>";
+              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>";
+              echo htmlspecialchars($_GET['error']);
+              echo "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick='this.parentElement.style.display=\"none\";'></button>";
+              echo "</div>";
             }
-          ?>
+            ?>
 
           <form action="includes/verificar_sesion.php" method="POST">
 
@@ -51,14 +54,14 @@ if (isset($_SESSION['usuario_id'])) {
             </div>
 
             <div class="mb-4">
-              <a href="#" class="enlace-olvide">¿Olvidó su contraseña?</a>
+              <a href="/habitoo/recuperar_password.php" class="enlace-olvide">¿Olvidó su contraseña?</a>
             </div>
 
             <input type="submit" class="btn-login" value="Ingresar">
           </form>
 
-          <p class="mt-4">O inicia sesión con</p>
-          <a href="#" class="login-icono"><i class="bi bi-google"></i></a>
+          <!-- <p class="mt-4">O inicia sesión con</p>
+          <a href="#" class="login-icono"><i class="bi bi-google"></i></a> -->
 
         </div>
       </div>

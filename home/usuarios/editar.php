@@ -52,6 +52,16 @@ if (!$usuario) {
           <a href="/habitoo/home/usuarios/index.php" class="btn-regresar-icono" title="Volver al inicio">
           <i class="bi bi-arrow-left-circle"></i>
           </a>
+
+          <?php 
+            // Mostrar mensaje de error si existe
+            if (isset($_GET['error'])) {
+              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>";
+              echo htmlspecialchars($_GET['error']);
+              echo "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick='this.parentElement.style.display=\"none\";'></button>";
+              echo "</div>";
+            }
+            ?>
         
           <form action="/habitoo/includes/actualizar.php" method="POST">
             <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">

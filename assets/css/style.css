@@ -64,7 +64,41 @@ body {
   background-image: linear-gradient(#fff9dc66), url("../img/fondo-5.png") !important; 
 }
 
+.fondo-groowi {
+  background-image: linear-gradient(#fff9dc66), url("../img/fondo-groowi.png") !important; 
+}
+
 /* ---------------menu--------------- */
+
+.profile-icon-bonis,
+.menu-icon-bonis {
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+.dropdown-menu .active {
+  background-color: #e0f7fa !important;
+  font-weight: bold;
+}
+
+/* Para botones activos del menú */
+.dropdown-item.active {
+  background-color: #ffdb8e !important;
+  color: #cfa604 !important; 
+  font-weight: bold;
+}
+
+/* Y para el ícono dentro del menú hamburguesa */
+/* Para activar también el icono */
+.dropdown-item.active .icono-menu {
+  color: #cfa604 !important;
+}
+
+
+.icono-menu {
+  font-size: 16px !important; /* Igual al texto */
+  vertical-align: middle;
+}
 
 /* --------------avatar------------ */
 .avatar-perfil {
@@ -77,7 +111,7 @@ body {
 /* --------------welcome------------- */
 
 .container-growi {
-  max-width: 900px; 
+  max-width: 700px; 
   margin: 0; 
   padding: 20px;
 }
@@ -113,7 +147,7 @@ body {
 
 .growi-img {
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   height: auto;
   margin-top: 20px;
   margin: 0;
@@ -370,10 +404,242 @@ body {
     max-width: 250px;
   }
 }
+/* ---------index de USUARIO---------- */
+.boton-habito {
+  width: 180px;
+  padding: 1rem;
+  border-radius: 20px;
+  text-align: center;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s, background-color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.boton-habito:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+  /* Estilo base para botones cuadrados */
+  .boton-cuadrado {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.2s;
+    text-decoration: none;
+  }
+
+  /* Botón Agregar */
+  .boton-agregar {
+    background-color: #f9a28adf;
+    color: #ffffff;
+    border: 5px solid #fd795bdc;
+
+  }
+
+  .boton-agregar:hover {
+    background-color: #fd795bdc;
+  }
+
+  .agregar-icon {
+    font-size: 50px;
+  }
+
+  /* Botón Ver */
+  .boton-ver {
+    background-color: #51c2b3ea;
+    color: #ffffff;
+    border: 5px solid #3a9d90e0;
+
+  }
+
+  .boton-ver:hover {
+    background-color: #3a9d90e0;
+  }
+
+  .ver-icon {
+    font-size: 50px;
+  }
+
+  /* Botón Historial */
+  .boton-huella {
+    background-color: #ffe57fdf;
+    color: #ffffff;
+    border: 5px solid #f8bd0de1;
+  }
+
+  .boton-huella:hover {
+    background-color: #f8bd0de1;
+  }
+
+  .huella-icon {
+    font-size: 50px;
+  }
+
+.groowi-index {
+  width: 100%;
+  max-width: 500px;
+  background-color: #FFFADC; 
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+/* Cuando la pantalla es menor a 768px (como en celular), cambia el tamaño a 250px */
+@media (max-width: 768px) {
+  .growi-index img {
+    max-width: 250px;
+  }
+}
+
+/* ------------BIENVENIDA---------------- */
+.bienvenida-card {
+  background-color: #fbecaf96;
+  border: 5px solid #facc4442;
+  border-radius: 20px;
+}
+
+.bienvenida-nombre {
+  font-size: 2rem;
+  color: #64634b;
+}
+
+.bienvenida-frase {
+  font-size: 1.2rem;
+  color: #64634b;
+}
+
+.sombra-suave {
+  box-shadow: 0 4px 12px #0000001a;
+}
+
+.frase-calendario {
+  font-size: 20px;
+  color: #64634b;
+  text-align: center;
+  margin-top: 20px;
+  background: #fffae8;
+  border-radius: 40px;
+}
 
 
 
-/* Header */
+/* ----------------CALENDARIO----------------- */
+/* Contenedor principal del calendario */
+.calendario-habitoo {
+  background: #fffae8;
+  border-radius: 20px;
+  border: 5px solid #facc4440;
+  padding: 20px;
+  width: fit-content; /* Ajusta el tamaño al contenido */
+  margin: 20px auto;
+  box-shadow: 0 0 10px #0000000d; 
+}
+
+/* Encabezado del calendario (flechas y nombre del mes) */
+.encabezado-calendario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Título del mes */
+.encabezado-calendario h2 {
+  margin: 0;
+  text-transform: capitalize; /* Para que el mes tenga primera letra en mayúscula */
+  font-weight: bold;
+  color: #3a9d8f;
+}
+
+/* Flechas decorativas */
+.flecha {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: default;
+  color: #3a9d8f;
+}
+
+.flecha:hover {
+  color: #24726e;
+  transform: scale(1.2);
+  transition: color 0.3s, transform 0.3s;
+}
+
+/* Estructura en grilla de 7 columnas (una por día de la semana) */
+.grid-calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+/* Letras de los días de la semana (D, L, M, etc.) */
+.dia-semana {
+  font-weight: bold;
+  color: #3a9d8f;
+  text-align: center;
+}
+
+/* Celda vacía */
+.celda,
+.celda-dia {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Celdas con los días normales */
+.celda-dia {
+  background: #fefefe;
+  color: #2b534f;
+  transition: background-color 0.8s, color 0.8s;
+}
+
+.celda-dia:hover {
+  background: #ffdc75;
+  color: #000;
+}
+
+/* Día actual resaltado */
+.celda-dia.actual {
+  background: #ffe57f;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Responsivo para dispositivos móviles */
+@media (max-width: 600px) {
+  .calendario-habitoo {
+    padding: 10px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 380px; /* Limita el ancho máximo */
+  }
+
+  .celda,
+  .celda-dia {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+  }
+}
+
+
+
+/* -------------Header--------------- */
 .header-bonis {
   background-color: #daf0d5;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);

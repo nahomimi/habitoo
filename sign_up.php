@@ -5,18 +5,24 @@
 <body class="fondo-inicio-registro">
 <main class="d-flex align-items-center justify-content-center vh-100">
   <div class="container position-relative">
-    <div class="d-flex justify-content-center mb-5">
-      <a href="/habitoo/index.php">
-        <img src="/habitoo/assets/img/logito.png" alt="Habitoo Logo" width="250">
-      </a>
-    </div>
+   
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
       <div class="col-md-6 col-lg-5">
-        <div class="caja-login text-center p-4 shadow">
+        <div class="caja-login text-center p-4 shadow mb-5 mt-5">
 
           <h2 class="titulo-login mb-3">Regístrate</h2>
           <p>¿Ya tienes cuenta? <a href="/habitoo/login.php" class="enlace-registro">Inicia Sesión</a></p>
+
+          <?php 
+            // Mostrar mensaje de error si existe
+            if (isset($_GET['error'])) {
+              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>";
+              echo htmlspecialchars($_GET['error']);
+              echo "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick='this.parentElement.style.display=\"none\";'></button>";
+              echo "</div>";
+            }
+            ?>
 
           <form action="/habitoo/includes/registrar_usuario.php" method="POST" onsubmit="return validarFormulario();">
             <input type="text" id="nombres" name="nombres" class="campo-login mb-3" placeholder="Nombres" required>
@@ -44,8 +50,8 @@
 
           </form>
 
-          <p class="mt-3">O regístrate con</p>
-          <a href="#" class="login-icono"><i class="bi bi-google"></i></a>
+          <!-- <p class="mt-3">O regístrate con</p>
+          <a href="#" class="login-icono"><i class="bi bi-google"></i></a> -->
 
         </div>
       </div>

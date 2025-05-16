@@ -51,6 +51,16 @@ if (!$usuario) {
           <img src="/habitoo/assets/default_avatar.png" alt="Avatar" class="mb-3 rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
         <?php endif; ?>
 
+        <?php 
+            // Mostrar mensaje de error si existe
+            if (isset($_GET['error'])) {
+              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>";
+              echo htmlspecialchars($_GET['error']);
+              echo "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick='this.parentElement.style.display=\"none\";'></button>";
+              echo "</div>";
+            }
+            ?>
+
         <form action="/habitoo/includes/actualizar_perfil.php" method="POST" enctype="multipart/form-data">
 
           <div class="position-relative mb-3">

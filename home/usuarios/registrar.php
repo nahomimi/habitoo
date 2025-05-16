@@ -32,6 +32,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/header_admin.php");
             <i class="bi bi-arrow-left-circle"></i>
             </a>
 
+            <?php 
+            // Mostrar mensaje de error si existe
+            if (isset($_GET['error'])) {
+              echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>";
+              echo htmlspecialchars($_GET['error']);
+              echo "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close' onclick='this.parentElement.style.display=\"none\";'></button>";
+              echo "</div>";
+            }
+            ?>
+
             <form action="/habitoo/includes/registrar_usuario.php" method="POST" onsubmit="return validarFormulario();">
 
               <div class="position-relative mb-3 mt-5">

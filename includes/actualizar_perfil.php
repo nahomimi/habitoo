@@ -11,15 +11,18 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['rol_id'] != 2) {
 require_once($_SERVER['DOCUMENT_ROOT'] . '/habitoo/includes/conexion.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // Validación de campos obligatorios
+    if (empty($_POST['nombres']) || empty($_POST['a_paterno']) || empty($_POST['email'])) {
+        header("Location: /habitoo/home/perfil.php?error=" . urlencode("Por favor completa todos los campos obligatorios"));
+        exit();
+    }
+
     try {
         $db = new Conexion();
         $conn = $db->conectar();
 
-        if (empty($_POST['nombres']) || empty($_POST['a_paterno']) || empty($_POST['email'])) {
-            header("Location: /habitoo/home/perfil.php?error=Faltan campos obligatorios");
-            exit;
-        }
-
+        // Sanitización
         $id = $_SESSION['usuario_id'];
         $nombres = htmlspecialchars($_POST['nombres']);
         $a_paterno = htmlspecialchars($_POST['a_paterno']);
@@ -31,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $avatar_url = null;
 
+        // Manejo de imagen
         if (!empty($_FILES['avatar']['name'])) {
             $archivo = $_FILES['avatar'];
             $nombreArchivo = basename($archivo['name']);
@@ -44,9 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (move_uploaded_file($archivo['tmp_name'], $rutaAbsoluta)) {
                     $avatar_url = "assets/uploads/" . $nombreUnico;
                 }
+            } else {
+                header("Location: /habitoo/home/perfil.php?error=" . urlencode("La imagen debe ser JPG o PNG y pesar máximo 2MB"));
+                exit();
             }
         }
 
+        // SQL base
         $sql = "UPDATE usuarios SET 
                     nombres = :nombres,
                     a_paterno = :a_paterno,
@@ -81,13 +89,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt->execute($params);
 
-        header("Location: /habitoo/home/perfil.php?success=Perfil actualizado correctamente");
-        exit;
+        header("Location: /habitoo/home/perfil.php?success=" . urlencode("Perfil actualizado correctamente"));
+        exit();
 
     } catch (PDOException $e) {
-        die("Error al actualizar: " . $e->getMessage());
+        header("Location: /habitoo/home/perfil.php?error=" . urlencode("Error al actualizar perfil"));
+        exit();
     }
+
 } else {
-    header("Location: /habitoo/home/perfil.php");
-    exit;
+    header("Location: /habitoo/home/perfil.php?error=" . urlencode("Método no permitido"));
+    exit();
 }
