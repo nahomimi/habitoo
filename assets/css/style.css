@@ -252,15 +252,16 @@ body {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
 }
 
-.lista_usuarios_tabla {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-  overflow: hidden;
-  border: 5px solid #e7af055c !important; 
-  border-radius: 20px;
+.lista_usuarios_subtitulo{
+  font-size: 20px; 
+  color: #ffffff; 
+  background: #ff5667b4; 
+  padding: 5px 10px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
 }
-
 /* Cabecera de tabla */
 .lista_usuarios_tabla thead th {
   background-color: #f9d66f; 
@@ -270,6 +271,17 @@ body {
   border: solid 2px #e7af05;
   color: #6d400c;
 }
+
+.lista_usuarios_tabla {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  overflow: hidden;
+  border: 5px solid #e7af055c !important; 
+  border-radius: 20px;
+  
+}
+
 
 /* Filas alternadas */
 .lista_usuarios_tabla tbody tr:nth-child(odd) {
@@ -289,7 +301,7 @@ body {
 }
 
 /* Iconos CRUD */
-.btn-ver, .btn-editar, .btn-eliminar {
+.btn-ver, .btn-editar, .btn-eliminar, .btn-listo, .btn-progreso {
   font-size: 24px;
   padding: 8px;
   margin: 0 6px;
@@ -328,13 +340,23 @@ body {
   transform: scale(1.2);
 }
 
-/* Icono check */
-.btn-check {
-  color: #3d1c04; 
+/* Icono listo */
+.btn-listo {
+  color: #ffbf00; 
 }
 
-.btn-check:hover {
-  color: #180d00; 
+.btn-listo:hover {
+  color: #e2ab04; 
+  transform: scale(1.2);
+}
+
+/* Icono progreso */
+.btn-progreso {
+  color: #45a000; 
+}
+
+.btn-progreso:hover {
+  color: #3d7802; 
   transform: scale(1.2);
 }
 
@@ -659,22 +681,25 @@ body {
 }
 
 .etiqueta-dia {
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background-color: #9dddda;
-  color: #105854;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #9dddda;
+    color: #105854;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 2px;
+  }
 
-.btn-dia:checked + .etiqueta-dia {
-  background-color: #a8e6cf;
-  color: #21726e;
-  font-weight: 600;
-  border: 1px solid #309993;
-}
+  .btn-dia:checked + .etiqueta-dia,
+  .dia-seleccionado,
+  .semana-seleccionada {
+    background-color: #a8e6cf;
+    color: #21726e;
+    font-weight: 600;
+    border: 1px solid #309993;
+  }
 
 /* Título vistoso */
 .habitos_registro_titulo {
@@ -755,6 +780,25 @@ body {
   display: inline-block !important;
 }
 /* 
+
+-------------------- insignias -------------------- */
+ /* Overlay gris para insignias bloqueadas */
+  .overlay-insignia {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: #555;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    pointer-events: none;
+  }
 
 /* -------------------- FOOTER -------------------- */
 .footer-bonis {

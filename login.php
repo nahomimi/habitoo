@@ -53,9 +53,9 @@ if (isset($_SESSION['usuario_id'])) {
               <i class="bi bi-eye-slash-fill icono" id="togglePassword"></i>
             </div>
 
-            <div class="mb-4">
+            <!-- <div class="mb-4">
               <a href="/habitoo/recuperar_password.php" class="enlace-olvide">¿Olvidó su contraseña?</a>
-            </div>
+            </div> -->
 
             <input type="submit" class="btn-login" value="Ingresar">
           </form>

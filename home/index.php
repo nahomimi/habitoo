@@ -76,7 +76,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/habitoo/includes/header.php');
               <i class="bi bi-eye ver-icon"></i> Ver mis hábitos
             </a>
             <a href="<?= '/habitoo/home/habitos/huella.php' ?>"  class="boton-habito boton-huella boton-cuadrado mb-2">
-              <i class="bi bi-clock-history huella-icon"></i> Huella de mis Metas
+              <i class="bi bi-clock-history huella-icon"></i> Huella de mis habitos
             </a>
           </div>
 

@@ -29,7 +29,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/header_admin.php");
 
             <!-- Botón de regreso -->
             <a href="/habitoo/home/usuarios/index.php" class="btn-regresar-icono" title="Volver al inicio">
-            <i class="bi bi-arrow-left-circle"></i>
+            <i class="bi bi-arrow-left-circle-fill"></i>
             </a>
 
             <?php 

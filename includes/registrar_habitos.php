@@ -1,5 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -12,52 +12,71 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/habitoo/includes/conexion.php");
 
 $conexion = new Conexion();
 $conn = $conexion->conectar();
-$conn->exec("SET NAMES utf8"); // Asegura codificación correcta
 
-// Obtener datos del formulario
 $usuario_id = $_SESSION['usuario_id'];
-$nombre = $_POST['nombre'] ?? '';
-$descripcion = $_POST['descripcion'] ?? '';
+$nombre = trim($_POST['nombre'] ?? '');
+$descripcion = trim($_POST['descripcion'] ?? '');
 $frecuencia_id = $_POST['frecuencia_id'] ?? null;
-$meta_semanal = $_POST['meta_semanal'] ?? null;
+$meta_mensual = $_POST['meta_mensual'] ?? null;
 $dias = $_POST['dias'] ?? [];
 
 if (empty($nombre) || empty($frecuencia_id)) {
-    header("Location: /habitoo/habitos/crear.php?error=" . urlencode("Faltan campos obligatorios"));
+    header("Location: /habitoo/home/habitos/registrar_habitos.php?error=" . urlencode("Todos los campos obligatorios deben estar completos."));
     exit();
 }
 
+// Obtener el nombre de la frecuencia
+$stmtFreq = $conn->prepare("SELECT nombre FROM frecuencias WHERE id = ?");
+$stmtFreq->execute([$frecuencia_id]);
+$nombreFrecuencia = strtolower($stmtFreq->fetchColumn());
+
+if (!$nombreFrecuencia) {
+    header("Location: /habitoo/home/habitos/registrar_habitos.php?error=" . urlencode("Frecuencia no válida."));
+    exit();
+}
+
+// Validar según la frecuencia
+if ($nombreFrecuencia === 'semanal' && empty($dias)) {
+    header("Location: /habitoo/home/habitos/registrar_habitos.php?error=" . urlencode("Selecciona al menos un día para hábitos semanales."));
+    exit();
+}
+
+if ($nombreFrecuencia === 'mensual') {
+    if (empty($meta_mensual) || !in_array($meta_mensual, ['1', '2', '3', '4'])) {
+        header("Location: /habitoo/home/habitos/registrar_habitos.php?error=" . urlencode("Selecciona una meta mensual válida (1 a 4 semanas)."));
+        exit();
+    }
+}
+
 try {
-    // Iniciar transacción
     $conn->beginTransaction();
 
-    // Insertar hábito
-    $stmt = $conn->prepare("INSERT INTO habitos (usuario_id, nombre, descripcion, frecuencia_id, meta_semanal) VALUES (?, ?, ?, ?, ?)");
-    $stmt->execute([$usuario_id, $nombre, $descripcion, $frecuencia_id, $meta_semanal]);
+    $sql = "INSERT INTO habitos (nombre, descripcion, usuario_id, frecuencia_id, meta_mensual, fecha_creacion) 
+            VALUES (:nombre, :descripcion, :usuario_id, :frecuencia_id, :meta, NOW())";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        ':nombre' => $nombre,
+        ':descripcion' => $descripcion,
+        ':usuario_id' => $usuario_id,
+        ':frecuencia_id' => $frecuencia_id,
+        ':meta' => $meta_mensual ?: null,
+    ]);
 
-    // Obtener ID del hábito insertado
     $habito_id = $conn->lastInsertId();
 
-    // Insertar días seleccionados (si hay)
-    if (!empty($dias)) {
-        $stmt_dia = $conn->prepare("INSERT INTO habitos_dias (habito_id, dia_id) VALUES (?, ?)");
+    if ($nombreFrecuencia === 'semanal' && is_array($dias)) {
+        $stmtDia = $conn->prepare("INSERT INTO habitos_dias (habito_id, dia_id) VALUES (:habito_id, :dia_id)");
         foreach ($dias as $dia_id) {
-            $stmt_dia->execute([$habito_id, $dia_id]);
+            $stmtDia->execute([':habito_id' => $habito_id, ':dia_id' => $dia_id]);
         }
     }
 
     $conn->commit();
 
-    // 
-    header("Location: /habitoo/home/habitos/registrar_habitos.php?success=" . urlencode("Hábito registrado con éxito"));
+    header("Location: /habitoo/home/habitos/registrar_habitos.php?success=" . urlencode("Hábito registrado correctamente."));
     exit();
-
-} catch (PDOException $e) {
+} catch (Exception $e) {
     $conn->rollBack();
-    error_log("Error al registrar hábito: " . $e->getMessage());
-
-    // Redirigir con error
-    header("Location: /habitoo/habitos/crear.php?error=" . urlencode("Error al guardar el hábito"));
+    header("Location: /habitoo/home/habitos/registrar_habitos.php?error=" . urlencode("Error al registrar el hábito: " . $e->getMessage()));
     exit();
 }
-?>

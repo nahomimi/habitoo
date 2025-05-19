@@ -22,13 +22,13 @@ $paginaActual = basename($_SERVER['PHP_SELF']);
                     </li>
                  
                     <li class="mx-3">
-                        <a href="/habitoo/home/productividad/index.php"
+                        <a href="/habitoo/home/metas/index.php"
                            class="nav-enlace-bonis <?= str_contains($paginaActual, 'productividad') ? 'active' : '' ?>">
                             <i class="bi bi-bar-chart-line-fill icono-menu me-2"></i>Productividad
                         </a>
                     </li>
                     <li class="mx-3">
-                        <a href="/habitoo/home/insignias/index.php"
+                        <a href="/habitoo/home/metas/insignias.php"
                            class="nav-enlace-bonis <?= str_contains($paginaActual, 'insignias') ? 'active' : '' ?>">
                             <i class="bi bi-award-fill icono-menu me-2"></i>Insignias
                         </a>

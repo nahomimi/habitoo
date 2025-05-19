@@ -46,9 +46,7 @@ $stmt = $conn->query($sql);
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<body class="fondo-inicio-registro">
-  
-</body>
+
 <main class=" py-5 d-flex flex-column">
   <div class="container flex-grow-1">
     <div class="text-center mb-4">

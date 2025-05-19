@@ -54,15 +54,19 @@ CREATE TABLE habitos (
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT,
     frecuencia_id TINYINT UNSIGNED NOT NULL,
+    meta_mensual TINYINT UNSIGNED,
     meta_semanal TINYINT UNSIGNED,
+    estado enum('activo','inactivo') DEFAULT 'activo',
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    contador INT UNSIGNED DEFAULT 0,
 
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
         ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (frecuencia_id) REFERENCES frecuencias(id)
         ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB;
+
 
 CREATE TABLE habitos_dias (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -76,6 +80,35 @@ CREATE TABLE habitos_dias (
     FOREIGN KEY (dia_id) REFERENCES dias(id)
         ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB;
+
+CREATE TABLE habitos_dias_check (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  habito_id INT,
+  dia_id INT,
+  usuario_id INT,
+  fecha DATE DEFAULT CURRENT_DATE,
+  UNIQUE (habito_id, dia_id, usuario_id),
+  FOREIGN KEY (habito_id) REFERENCES habitos(id),
+  FOREIGN KEY (dia_id) REFERENCES dias(id),
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+CREATE TABLE progreso_semanal (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  habito_id INT,
+  dia_id INT,
+  fecha DATE,
+  usuario_id INT
+);
+
+CREATE TABLE progreso_mensual (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  habito_id INT,
+  semana INT,
+  fecha DATE,
+  usuario_id INT
+);
+
 
 CREATE TABLE registros (
     id INT AUTO_INCREMENT PRIMARY KEY,
